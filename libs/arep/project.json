@@ -1,0 +1,19 @@
+{
+  "name": "arep",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/arep/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/arep",
+        "main": "libs/arep/src/index.ts",
+        "tsConfig": "libs/arep/tsconfig.lib.json",
+        "assets": ["libs/arep/*.md"]
+      }
+    }
+  }
+}
