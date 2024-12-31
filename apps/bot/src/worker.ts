@@ -40,17 +40,14 @@ export default async function worker() {
     'http://brd-customer-hl_3b4988e1-zone-arep:dmsw1j32r4kj@brd.superproxy.io:22225'
   );
 
-  const email = await step('Creating a random email', async () => {
+  const email = await step('Creating a random email', async ({ signal }) => {
     try {
-      const response = await mail.createRandomEmail({ httpsAgent });
+      const response = await mail.createRandomEmail({ httpsAgent, signal });
 
       console.log(response.address, response.password);
 
       return response;
-    } catch (error) {
-      console.log(error);
-      console.log(error.response);
-
+    } catch {
       throw new Error('Failed to create a random email');
     }
   });
